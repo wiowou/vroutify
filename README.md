@@ -12,7 +12,7 @@ npm install vroutify
 
 # usage
 
-package.json script
+package.json
 
 ```json
 "scripts": {
