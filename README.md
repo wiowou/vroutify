@@ -20,8 +20,9 @@ package.json script
   },
 ```
 
-```
 In the terminal, issue:
+
+```
 npm run vroutify
 ```
 
