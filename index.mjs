@@ -25,6 +25,10 @@ function addRoutingOptions(routingOpts, imports, indexRoute) {
     ...indexRoute,
     ...routingOpts.default,
   };
+  return {
+    imports,
+    indexRoute
+  }
 }
 
 async function createRoutes(projDir, pagesDir, curRoutePath, imports) {
@@ -43,7 +47,7 @@ async function createRoutes(projDir, pagesDir, curRoutePath, imports) {
   }
   if (routing_js) {
     const routingOpts = await import(path.join(projDir, 'src', 'pages', routing_js.name));
-    addRoutingOptions(routingOpts, imports, indexRoute);
+    ({imports, indexRoute} = addRoutingOptions(routingOpts, imports, indexRoute));
   }
 
   for (const dirEnt of dirEnts) {
