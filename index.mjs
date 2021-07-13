@@ -67,6 +67,7 @@ async function createRoutes(projDir, pagesDir, curRoutePath, imports) {
     }
   }
   routes.push(indexRoute);
+  routes.sort((lhs, rhs) => -lhs.path.localeCompare(rhs.path));
   return routes;
 }
 
