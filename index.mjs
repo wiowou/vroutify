@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 function remove(arr, predicate) {
   const idx = arr.findIndex(predicate);
@@ -7,7 +8,26 @@ function remove(arr, predicate) {
   return arr.splice(idx, 1)[0];
 }
 
-async function createRoutes(pagesDir, curRoutePath, imports) {
+function addRoutingOptions(routingOpts, imports, indexRoute) {
+  if ('component' in routingOpts.default) {
+    imports.push(`import ${routingOpts.default.component.name} from '${routingOpts.default.component.path}';`);
+    routingOpts.default.component = `*${routingOpts.default.component.name}*`;
+  }
+  if ('components' in routingOpts.default) {
+    for (const slot in routingOpts.default.components) {
+      imports.push(
+        `import ${routingOpts.default.components[slot].name} from '${routingOpts.default.components[slot].path}';`
+      );
+      routingOpts.default.components[slot] = `*${routingOpts.default.components[slot].name}*`;
+    }
+  }
+  indexRoute = {
+    ...indexRoute,
+    ...routingOpts.default,
+  };
+}
+
+async function createRoutes(projDir, pagesDir, curRoutePath, imports) {
   const dirPath = pagesDir + curRoutePath.replace('/', path.sep);
   let dirEnts = await fs.readdir(dirPath, { withFileTypes: true });
   const index_vue = remove(dirEnts, x => x.name.toLowerCase() === 'index.vue');
@@ -22,24 +42,8 @@ async function createRoutes(pagesDir, curRoutePath, imports) {
     imports.push(`import ${componentName} from '${path.join('@', 'pages', curRoutePath, index_vue.name)}';`);
   }
   if (routing_js) {
-    const routingOpts = await import(path.join(dirPath, routing_js.name));
-
-    if ('component' in routingOpts.default) {
-      imports.push(`import ${routingOpts.default.component.name} from '${routingOpts.default.component.path}';`);
-      routingOpts.default.component = `*${routingOpts.default.component.name}*`;
-    }
-    if ('components' in routingOpts.default) {
-      for (const slot in routingOpts.default.components) {
-        imports.push(
-          `import ${routingOpts.default.components[slot].name} from '${routingOpts.default.components[slot].path}';`
-        );
-        routingOpts.default.components[slot] = `*${routingOpts.default.components[slot].name}*`;
-      }
-    }
-    indexRoute = {
-      ...indexRoute,
-      ...routingOpts.default,
-    };
+    const routingOpts = await import(path.join(projDir, 'src', 'pages', routing_js.name));
+    addRoutingOptions(routingOpts, imports, indexRoute);
   }
 
   for (const dirEnt of dirEnts) {
@@ -64,7 +68,8 @@ async function createRoutes(pagesDir, curRoutePath, imports) {
 
 async function vroutify(pagesDir) {
   const importStatements = [];
-  const routes = await createRoutes(pagesDir, '', importStatements);
+  const projDir = fileURLToPath(import.meta.url).split(path.sep + 'node_modules' + path.sep)[0];
+  const routes = await createRoutes(projDir, pagesDir, '', importStatements);
   return {
     routes,
     importStatements,
