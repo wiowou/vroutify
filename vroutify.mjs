@@ -1,20 +1,18 @@
 #!/usr/bin/env node
 
-import vroutify from '../';
+import vroutify from './index.mjs';
 
 import { createWriteStream } from 'fs';
 import util from 'util';
 import path from 'path';
-import { fileURLToPath } from 'url';
 
-(function next() {
-  const pagesDir = null;
+(async function next() {
+  let pagesDir = null;
   if (!pagesDir) {
-    const curDir = path.dirname(fileURLToPath(import.meta.url));
-    pagesDir = path.join(path.dirname(curDir), 'src', 'pages');
+    pagesDir = path.join('src', 'pages');
   }
   const { routes, importStatements } = await vroutify(pagesDir);
-  const outputStream = createWriteStream('src/router/routes.js', { flags: 'w' });
+  const outputStream = createWriteStream(path.join('src', 'router', 'routes.js'), { flags: 'w' });
   const outputConsole = new console.Console(outputStream);
   for (const s of importStatements) {
     outputConsole.log(s);

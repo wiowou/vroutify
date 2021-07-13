@@ -10,12 +10,21 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/wiowou/node-vroutify.git"
+    "url": "git+https://github.com/wiowou/node-vroutify.git"
   },
-  "bin": "bin/vroutify.mjs",
+  "bin": {
+    "vroutify": "vroutify.mjs"
+  },
   "license": "MIT",
   "files": [
-    "bin",
+    "vroutify.mjs",
     "index.mjs"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/wiowou/node-vroutify/issues"
+  },
+  "homepage": "https://github.com/wiowou/node-vroutify#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }

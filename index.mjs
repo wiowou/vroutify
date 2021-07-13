@@ -41,20 +41,20 @@ async function createRoutes(pagesDir, curRoutePath, imports) {
       ...routingOpts.default,
     };
   }
-  if (dirEnts.length) indexRoute.children = [];
 
   for (const dirEnt of dirEnts) {
     if (dirEnt.isFile()) {
       const routePath = `${curRoutePath}/${dirEnt.name.split('.')[0]}`;
       const componentName = `HOME${routePath.replaceAll('/', '').toUpperCase()}`;
       let route = {
-        path: path.basename(routePath),
+        path: curRoutePath === '' ? `/${path.basename(routePath)}` : path.basename(routePath),
         component: `*${componentName}*`,
       };
       routes.push(route);
       imports.push(`import ${componentName} from '${path.join('@', 'pages', curRoutePath, dirEnt.name)}';`);
     } else if (dirEnt.isDirectory()) {
       const children = await createRoutes(pagesDir, `${curRoutePath}/${dirEnt.name}`, imports);
+      if (!indexRoute.children) indexRoute.children = [];
       indexRoute.children = indexRoute.children.concat(children);
     }
   }
@@ -62,10 +62,13 @@ async function createRoutes(pagesDir, curRoutePath, imports) {
   return routes;
 }
 
-export default async function vroutify(pagesDir) {
+async function vroutify(pagesDir) {
   const importStatements = [];
+  const routes = await createRoutes(pagesDir, '', importStatements);
   return {
-    routes: createRoutes(pagesDir, '', importStatements),
+    routes,
     importStatements,
   };
 }
+
+export default vroutify;
