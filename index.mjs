@@ -27,8 +27,8 @@ function addRoutingOptions(routingOpts, imports, indexRoute) {
   };
   return {
     imports,
-    indexRoute
-  }
+    indexRoute,
+  };
 }
 
 async function createRoutes(projDir, pagesDir, curRoutePath, imports) {
@@ -37,8 +37,9 @@ async function createRoutes(projDir, pagesDir, curRoutePath, imports) {
   const index_vue = remove(dirEnts, x => x.name.toLowerCase() === 'index.vue');
   const routing_js = remove(dirEnts, x => x.name.toLowerCase() === 'routing.mjs');
   const routes = [];
+  let relativePath = curRoutePath === '' ? '/' : path.basename(curRoutePath).replace('_', ':');
   let indexRoute = {
-    path: curRoutePath === '' ? '/' : path.basename(curRoutePath),
+    path: relativePath,
   };
   if (index_vue) {
     const componentName = `HOME${curRoutePath.replaceAll('/', '').toUpperCase()}`;
@@ -47,15 +48,16 @@ async function createRoutes(projDir, pagesDir, curRoutePath, imports) {
   }
   if (routing_js) {
     const routingOpts = await import(path.join(projDir, 'src', 'pages', routing_js.name));
-    ({imports, indexRoute} = addRoutingOptions(routingOpts, imports, indexRoute));
+    ({ imports, indexRoute } = addRoutingOptions(routingOpts, imports, indexRoute));
   }
 
   for (const dirEnt of dirEnts) {
     if (dirEnt.isFile()) {
-      const routePath = `${curRoutePath}/${dirEnt.name.split('.')[0]}`;
-      const componentName = `HOME${routePath.replaceAll('/', '').toUpperCase()}`;
+      let relativePath = dirEnt.name.split('.')[0].replace('_', ':');
+      if (curRoutePath === '') relativePath = '/' + relativePath;
+      const componentName = `HOME${curRoutePath}${relativePath}`.replaceAll('/', '').toUpperCase();
       let route = {
-        path: curRoutePath === '' ? `/${path.basename(routePath)}` : path.basename(routePath),
+        path: relativePath,
         component: `*${componentName}*`,
       };
       routes.push(route);

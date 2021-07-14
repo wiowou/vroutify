@@ -1,15 +1,14 @@
 # vroutify
 
-A Node.js module with available npx command to create the routes array required by vue-router.
+A [Node.js](https://nodejs.org) module with available [npx](https://www.npmjs.com/package.npx) command to create the routes array required by vue-router.
 Requires a 'pages' directory which contains vue component files as an input.
-The 'pages' directory works in an almost identical manner to that of [Nuxt.js](https://nuxtjs.org)
 
 # install
 
 With [npm](http://npmjs.org) do:
 
 ```
-npm install vroutify
+npm install --save-dev vroutify
 ```
 
 # usage
@@ -47,6 +46,8 @@ In the terminal, issue:
 ```
 npm run vroutify
 ```
+
+# pages directory
 
 # license
 
