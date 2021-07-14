@@ -11,10 +11,13 @@ import path from 'path';
   if (!pagesDir) {
     pagesDir = path.join('src', 'pages');
   }
-  const { routes, importStatements } = await vroutify(pagesDir);
+  const { routes, imports } = await vroutify({ 
+    pagesDir,
+    sourceDirAlias: '@' 
+  });
   const outputStream = createWriteStream(path.join('src', 'router', 'routes.js'), { flags: 'w' });
   const outputConsole = new console.Console(outputStream);
-  for (const s of importStatements) {
+  for (const s of imports) {
     outputConsole.log(s);
   }
   outputConsole.log();
