@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import vroutify from './index.mjs';
+import vroutify from '../index.mjs';
 
 import { createWriteStream } from 'fs';
 import util from 'util';
@@ -11,9 +11,9 @@ import path from 'path';
   if (!pagesDir) {
     pagesDir = path.join('src', 'pages');
   }
-  const { routes, imports } = await vroutify({ 
+  const { routes, imports } = await vroutify({
     pagesDir,
-    sourceDirAlias: '@' 
+    sourceDirAlias: '@',
   });
   const outputStream = createWriteStream(path.join('src', 'router', 'routes.js'), { flags: 'w' });
   const outputConsole = new console.Console(outputStream);

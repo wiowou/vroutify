@@ -13,11 +13,11 @@
     "url": "git+https://github.com/wiowou/node-vroutify.git"
   },
   "bin": {
-    "vroutify": "vroutify.mjs"
+    "vroutify": "bin/vroutify.mjs"
   },
   "license": "MIT",
   "files": [
-    "vroutify.mjs",
+    "bin",
     "index.mjs"
   ],
   "bugs": {

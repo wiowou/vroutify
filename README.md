@@ -3,6 +3,11 @@
 A [Node.js](https://nodejs.org) module with available [npx](https://www.npmjs.com/package.npx) command to create the routes array required by vue-router.
 Requires a 'pages' directory which contains vue component files as an input.
 
+# TODO
+
+- Parse command line arguments for pagesDir and routesDir
+- Test each feature thoroughly using Mocha and Chai
+
 # install
 
 With [npm](http://npmjs.org) do:
