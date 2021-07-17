@@ -5,17 +5,36 @@ import vroutify from '../index.mjs';
 import { createWriteStream } from 'fs';
 import util from 'util';
 import path from 'path';
+import process from 'process';
 
-(async function next() {
-  let pagesDir = null;
-  if (!pagesDir) {
-    pagesDir = path.join('src', 'pages');
-  }
-  const { routes, imports } = await vroutify({
-    pagesDir,
-    sourceDirAlias: '@',
+function cleanseDirArg(dirArg) {
+  return dirArg.startsWith('/') || dirArg.startsWith('\\') ? (dirArg = dirArg.substr(1)) : dirArg;
+}
+
+async function main() {
+  const args = process.argv;
+  const projDir = args[1].split(path.sep + 'node_modules' + path.sep)[0];
+  let pagesDir = path.join('src', 'pages');
+  let routesDir = path.join('src', 'router');
+  let sourceDirAlias = '@';
+  args.forEach((arg, index) => {
+    if (arg.toLowerCase() === '--pages-dir') {
+      pagesDir = args[index + 1];
+      pagesDir = cleanseDirArg(pagesDir);
+    } else if (arg.toLowerCase() === '--routes-dir') {
+      routesDir = args[index + 1];
+      routesDir = cleanseDirArg(routesDir);
+    } else if (arg.toLowerCase() === '--source-dir-alias') {
+      routesDir = args[index + 1];
+    }
   });
-  const outputStream = createWriteStream(path.join('src', 'router', 'routes.js'), { flags: 'w' });
+
+  const { routes, imports } = await vroutify({
+    projDir,
+    pagesDir,
+    sourceDirAlias,
+  });
+  const outputStream = createWriteStream(path.join(projDir, routesDir, 'routes.js'), { flags: 'w' });
   const outputConsole = new console.Console(outputStream);
   for (const s of imports) {
     outputConsole.log(s);
@@ -25,4 +44,6 @@ import path from 'path';
     'export default ' +
       util.inspect(routes, { showHidden: false, depth: null, compact: false }).replaceAll(/('\*)|(\*')/g, '')
   );
-})();
+}
+
+await main();

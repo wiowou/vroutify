@@ -1,6 +1,5 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { fileURLToPath } from 'url';
 
 function remove(arr, predicate) {
   const idx = arr.findIndex(predicate);
@@ -89,13 +88,12 @@ async function createRoutes({ projDir, pagesDir, curRoutePath, sourceDirAlias })
   };
 }
 
-async function vroutify({ pagesDir, sourceDirAlias }) {
-  const projDir = fileURLToPath(import.meta.url).split(path.sep + 'node_modules' + path.sep)[0];
+async function vroutify({ projDir, pagesDir, sourceDirAlias }) {
   return await createRoutes({
     projDir,
     pagesDir,
     curRoutePath: '',
-    sourceDirAlias
+    sourceDirAlias,
   });
 }
 
