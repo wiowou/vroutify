@@ -32,6 +32,7 @@ async function createRoutes(pagesDir, curRoutePath, sourceDir, sourceDirAlias) {
     if ('components' in routingOpts.default) {
       delete routingOpts.default.component;
       delete indexRoute.component;
+      imports.pop(); //do not assume the import from index_vue will be used
       for (const slot in routingOpts.default.components) {
         const importPath = routingOpts.default.components[slot];
         let fileName = path.basename(routingOpts.default.components[slot]).split('.')[0];
