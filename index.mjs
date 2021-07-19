@@ -33,8 +33,8 @@ async function createRoutes(pagesDir, curRoutePath, sourceDir, sourceDirAlias) {
       delete routingOpts.default.component;
       delete indexRoute.component;
       for (const slot in routingOpts.default.components) {
-        const importPath = routingOpts.default.components[slot].path;
-        let fileName = path.basename(routingOpts.default.components[slot].path).split('.')[0];
+        const importPath = routingOpts.default.components[slot];
+        let fileName = path.basename(routingOpts.default.components[slot]).split('.')[0];
         fileName = fileName.toLowerCase() === 'index' ? '' : fileName;
         const componentName = `HOME${curRoutePath}${fileName}`.replaceAll('/', '').toUpperCase();
         imports.push(`import ${componentName} from '${importPath}';`);
