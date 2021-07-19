@@ -25,11 +25,7 @@ async function main() {
     }
   });
 
-  const { routes, imports } = await vroutify({
-    pagesDir,
-    sourceDir,
-    sourceDirAlias,
-  });
+  const { routes, imports } = await vroutify(pagesDir, sourceDir, sourceDirAlias);
   const outputStream = createWriteStream(path.join(routesDir, 'routes.js'), { flags: 'w' });
   const outputConsole = new console.Console(outputStream);
   for (const s of imports) {

@@ -5,7 +5,6 @@ Requires a 'pages' directory which contains vue component files as an input.
 
 # TODO
 
-- Parse command line arguments for pagesDir and routesDir
 - Test each feature thoroughly using Mocha and Chai
 
 # install
