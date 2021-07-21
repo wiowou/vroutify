@@ -7,6 +7,19 @@ import util from 'util';
 import path from 'path';
 import process from 'process';
 
+function writeToFile(routesDir, routes, imports) {
+  const outputStream = createWriteStream(path.join(routesDir, 'routes.js'), { flags: 'w' });
+  const outputConsole = new console.Console(outputStream);
+  for (const s of imports) {
+    outputConsole.log(s);
+  }
+  outputConsole.log();
+  outputConsole.log(
+    'export default ' +
+      util.inspect(routes, { showHidden: false, depth: null, compact: false }).replaceAll(/('\*)|(\*')/g, '')
+  );
+}
+
 async function main() {
   const args = process.argv;
   let pagesDir = '';
@@ -24,18 +37,8 @@ async function main() {
       sourceDirAlias = args[index + 1];
     }
   });
-
   const { routes, imports } = await vroutify(pagesDir, sourceDir, sourceDirAlias);
-  const outputStream = createWriteStream(path.join(routesDir, 'routes.js'), { flags: 'w' });
-  const outputConsole = new console.Console(outputStream);
-  for (const s of imports) {
-    outputConsole.log(s);
-  }
-  outputConsole.log();
-  outputConsole.log(
-    'export default ' +
-      util.inspect(routes, { showHidden: false, depth: null, compact: false }).replaceAll(/('\*)|(\*')/g, '')
-  );
+  writeToFile(routesDir, routes, imports);
 }
 
 await main();

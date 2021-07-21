@@ -8,6 +8,10 @@ function remove(arr, predicate) {
   return arr.splice(idx, 1)[0];
 }
 
+function routeComparer(lhs, rhs) {
+  return -lhs.path.localeCompare(rhs.path);
+}
+
 async function createRoutes(pagesDir, curRoutePath, sourceDir, sourceDirAlias) {
   const dirPath = pagesDir + curRoutePath.replace('/', path.sep);
   let dirEnts = await fs.readdir(dirPath, { withFileTypes: true });
@@ -29,6 +33,14 @@ async function createRoutes(pagesDir, curRoutePath, sourceDir, sourceDirAlias) {
   if (routing_js) {
     const projDir = process.cwd();
     const routingOpts = await import(path.join(projDir, dirPath, routing_js.name));
+    for (const prop in routingOpts.default) {
+      if (typeof routingOpts.default[prop] === 'function') {
+        let functionBody = routingOpts.default[prop].toString();
+        functionBody = functionBody.replaceAll(/( {2,})|(\r)|(\n)|(\t)/g, '');
+        const functionKeyword = functionBody.includes('=>') ? '' : ' function ';
+        routingOpts.default[prop] = `*${functionKeyword} ${functionBody}*`;
+      }
+    }
     if ('components' in routingOpts.default) {
       delete routingOpts.default.component;
       delete indexRoute.component;
@@ -58,7 +70,8 @@ async function createRoutes(pagesDir, curRoutePath, sourceDir, sourceDirAlias) {
         path: relativePath,
         component: `*${componentName}*`,
       };
-      routes.push(route);
+      if (!indexRoute.children) indexRoute.children = [];
+      indexRoute.children.push(route);
       let importPath = path.join(pagesDir, curRoutePath, dirEnt.name);
       importPath = importPath.replace(sourceDir, sourceDirAlias);
       imports.push(`import ${componentName} from '${importPath}';`);
@@ -74,8 +87,11 @@ async function createRoutes(pagesDir, curRoutePath, sourceDir, sourceDirAlias) {
       imports = imports.concat(childImports);
     }
   }
+  if (indexRoute.children) {
+    indexRoute.children.sort(routeComparer);
+  }
   routes.push(indexRoute);
-  routes.sort((lhs, rhs) => -lhs.path.localeCompare(rhs.path));
+  routes.sort(routeComparer);
   return {
     imports,
     routes,

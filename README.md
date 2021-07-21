@@ -5,6 +5,7 @@ Requires a 'pages' directory which contains vue component files as an input.
 
 # TODO
 
+- Sorting of dynamic routes vs normal routes. Specify an order somewhere?
 - Test each feature thoroughly using Mocha and Chai
 
 # install
