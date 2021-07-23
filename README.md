@@ -3,14 +3,9 @@
 A [Node.js](https://nodejs.org) module with available [npx](https://www.npmjs.com/package.npx) command to create the routes array required by vue-router.
 Requires a 'pages' directory which contains vue component files as an input.
 
-# TODO
+## install
 
-- Sorting of dynamic routes vs normal routes. Specify an order somewhere?
-- Test each feature thoroughly using Mocha and Chai
-
-# install
-
-With [npm](http://npmjs.org) do to install locally:
+With [npm](http://npmjs.org) install locally:
 
 ```
 npm install --save-dev vroutify
@@ -22,7 +17,11 @@ or globally install with:
 npm install -g vroutify
 ```
 
-# usage
+## vroutify-example
+
+Please refer to [vroutify-example](https://github.com/wiowou/vroutify-example) for a working Vue.js project that uses Vroutify.
+
+## usage
 
 package.json
 
@@ -68,8 +67,8 @@ In the terminal, issue:
 npm run vroutify
 ```
 
-# pages directory
+## pages directory
 
-# license
+## license
 
 MIT
