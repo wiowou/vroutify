@@ -1,7 +1,9 @@
 # vroutify
 
 A [Node.js](https://nodejs.org) module with available [npx](https://www.npmjs.com/package.npx) command to create the routes array required by vue-router.
-Requires version 16.5.0 of [Node.js](https://nodejs.org) or greater.
+Requires version 16.5.0 of [Node.js](https://nodejs.org) or greater, [Vue.js](https://v3.vuejs.org/), and [Vue Router](https://router.vuejs.org/).
+
+If you have used [Nuxt.js](https://nuxtjs.org/), you should find the rules about the 'pages' directory very familiar.
 
 ## install
 
@@ -67,7 +69,21 @@ In the terminal, issue:
 npm run vroutify
 ```
 
-## pages directory
+## documentation
+
+### command line arguments
+
+### pages directory
+
+This directory should contain your application views and the directory's structure will determine how your routes are set up.
+Specifically, Vroutify will read all the .vue files and any routing.mjs files to create a routes.js file that is used directly
+by [Vue Router](https://router.vuejs.org/).
+
+#### files named index.vue
+
+#### dynamic pages
+
+#### routing.mjs files
 
 ## license
 

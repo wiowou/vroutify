@@ -62,6 +62,7 @@ async function createRoutes(pagesDir, curRoutePath, sourceDir, sourceDirAlias) {
 
   for (const dirEnt of dirEnts) {
     if (dirEnt.isFile()) {
+      if (!dirEnt.name.toLowerCase().endsWith('.vue')) continue;
       const fileName = dirEnt.name.split('.')[0];
       let relativePath = fileName.replace('_', ':');
       if (curRoutePath === '') relativePath = '/' + relativePath;
