@@ -1,7 +1,7 @@
 # vroutify
 
 A [Node.js](https://nodejs.org) module with available [npx](https://www.npmjs.com/package.npx) command to create the routes array required by vue-router.
-Requires a 'pages' directory which contains vue component files as an input.
+Requires version 16.5.0 of [Node.js](https://nodejs.org) or greater.
 
 ## install
 
