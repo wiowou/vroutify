@@ -10,19 +10,35 @@ Requires a 'pages' directory which contains vue component files as an input.
 
 # install
 
-With [npm](http://npmjs.org) do:
+With [npm](http://npmjs.org) do to install locally:
 
 ```
 npm install --save-dev vroutify
+```
+
+or globally install with:
+
+```
+npm install -g vroutify
 ```
 
 # usage
 
 package.json
 
+If you installed locally:
+
 ```json
 "scripts": {
     "vroutify": "npx vroutify"
+  },
+```
+
+If you installed globally:
+
+```json
+"scripts": {
+    "vroutify": "vroutify"
   },
 ```
 

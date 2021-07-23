@@ -37,8 +37,8 @@ async function createRoutes(pagesDir, curRoutePath, sourceDir, sourceDirAlias) {
       if (typeof routingOpts.default[prop] === 'function') {
         let functionBody = routingOpts.default[prop].toString();
         functionBody = functionBody.replaceAll(/( {2,})|(\r)|(\n)|(\t)/g, '');
-        const functionKeyword = functionBody.includes('=>') ? '' : ' function ';
-        routingOpts.default[prop] = `*${functionKeyword} ${functionBody}*`;
+        //const functionKeyword = routingOpts.default[prop].toString().includes('=>') ? '' : 'function';
+        routingOpts.default[prop] = `*function ${functionBody}*`;
       }
     }
     if ('components' in routingOpts.default) {
