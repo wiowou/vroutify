@@ -1,11 +1,11 @@
-# vroutify
+# Vroutify
 
 A [Node.js](https://nodejs.org) module with available [npx](https://www.npmjs.com/package.npx) command to create the routes array required by vue-router.
 Requires version 16.5.0 of [Node.js](https://nodejs.org) or greater, [Vue.js](https://v3.vuejs.org/), and [Vue Router](https://router.vuejs.org/).
 
 If you have used [Nuxt.js](https://nuxtjs.org/), you should find the rules about the `pages` directory very familiar.
 
-## install
+## Install
 
 With [npm](http://npmjs.org) install locally:
 
@@ -19,12 +19,12 @@ or globally install with:
 npm install -g vroutify
 ```
 
-## vroutify-example
+## Vroutify Example
 
 Please refer to the example folder for a working Vue.js project that uses Vroutify.
 The examples in the documentation refer directly to it.
 
-## usage
+## Usage
 
 package.json
 
@@ -70,9 +70,9 @@ In the terminal, issue:
 npm run vroutify
 ```
 
-## documentation
+## Documentation
 
-### command line arguments
+### Command Line Arguments
 
 ```
 --pages-dir [src/pages]
@@ -98,9 +98,9 @@ The directory containing your application's source files. A relative path from t
 
 An alias for the source-dir that should be used in import statements. It defaults to `@`. This is currently in line with what [Vue CLI](https://cli.vuejs.org/) uses.
 
-### file system routing
+### File System Routing
 
-#### pages directory
+#### Pages Directory
 
 This directory should contain your application views and the directory's structure will determine how your routes are set up.
 Specifically, Vroutify will read all the `.vue` files and any `routing.mjs` files in `src/pages` to create a `routes.js` file in the
@@ -204,24 +204,24 @@ export default [
 ];
 ```
 
-##### files named index.vue
+##### Files Named index.vue
 
 These files contain Vue components that will be referenced at the route corresponding to the directory that contains the file.
 For example, `pages/index.vue` will place the component in that file at the route `/`. Likewise, `pages/authors/index.vue` will
 place the component in that file at `/authors`.
 
-##### other .vue files
+##### Other .vue Files
 
 These Vue component files will place the component at a route specified by the filename. For example, `pages/about.vue` will
 place the component in that file at `/about`.
 
-##### dynamic routes
+##### Dynamic Routes
 
 It's often necessary to allow for routes that are accessed dynamically. For example, one may wish to access the page for a specific
 author, referenced by the author's userid: `/authors/23` where 23 is a user's id. This result can be achieved by using an
-underscore character to precede the directory name (as in `pages/authors/\_userid/index.vue`) or the file name (as in `pages/editors/\_userid.vue`).
+underscore character to precede the directory name (as in `pages/authors/_userid/index.vue`) or the file name (as in `pages/editors/_userid.vue`).
 
-##### routing.mjs files
+##### routing.mjs Files
 
 These are special files that you can use to supplement the route object created by Vroutify for each route. (Route object is the name used
 for each of the objects in the routes array of the routes.js file.) These files are necessary in some cases. For example, `pages/readers/index.vue` contains
@@ -243,12 +243,12 @@ export default {
 };
 ```
 
-**Options are Merged**
+**Options Are Merged**
 
 A `routing.mjs` file will merge its options with those generated automatically by Vroutify. It will override any of the automatically generated options in the routes object.
 This can be useful in some cases. If, for example, a props object were specified in `pages/readers/routing.mjs`, it would override the automatically generated props object.
 
-**Vue Component imports**
+**Vue Component Imports**
 
 In the example above, the path to each view component is specified. (The `@` is an alias for the project src directory). A direct import of Vue components is not possible
 at the moment since routing.mjs is read by Node.js. Import statements that are capable of being understood by Node.js can work but it is not recommended that import
@@ -258,14 +258,14 @@ statements be used in `routing.mjs` files at the moment.
 
 Functions are supported but they must not be "arrow" functions.
 
-##### ignored routes
+##### Ignored Routes
 
 Routes that start with a hyphen, '-', will be ignored by Vroutify. In this example, `pages/-others` and `pages/-help.vue` are ignored.
 
-##### ignored files
+##### Ignored Files
 
 Files that don't end in .vue will be ignored.
 
-## license
+## License
 
 MIT
