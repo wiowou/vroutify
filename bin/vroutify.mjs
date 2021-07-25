@@ -15,7 +15,7 @@ async function main() {
   args.forEach((arg, index) => {
     if (arg.toLowerCase() === '--pages-dir') {
       pagesDir = args[index + 1];
-    } else if (arg.toLowerCase() === '--routes-dir') {
+    } else if (arg.toLowerCase() === '--router-dir') {
       routesDir = args[index + 1];
     } else if (arg.toLowerCase() === '--source-dir') {
       sourceDir = args[index + 1];
