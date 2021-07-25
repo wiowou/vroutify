@@ -252,6 +252,9 @@ In the example above, the path to each view component is specified. (The '@' is 
 at the moment since routing.mjs is read by Node.js. Import statements that are capable of being understood by Node.js can work but it is not recommended that import
 statements be used in routing.mjs files at the moment.
 
+**Functions as Properties**
+Functions are supported but they must not be "arrow" functions.
+
 ##### ignored routes
 
 Routes that start with a hyphen, '-', will be ignored by Vroutify. In this example, pages/-others and pages/-help.vue are ignored.
