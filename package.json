@@ -6,7 +6,9 @@
   "main": "index.mjs",
   "keywords": [
     "vue",
-    "vue-router"
+    "vue-router",
+    "nuxt",
+    "vue-cli"
   ],
   "repository": {
     "type": "git",
@@ -18,13 +20,17 @@
   "license": "MIT",
   "files": [
     "bin",
-    "lib"
+    "lib",
+    "index.mjs"
   ],
   "bugs": {
     "url": "https://github.com/wiowou/node-vroutify/issues"
   },
   "homepage": "https://github.com/wiowou/node-vroutify#readme",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/**/*.mjs"
+  },
+  "devDependencies": {
+    "mocha": "^9.0.2"
   }
 }

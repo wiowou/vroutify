@@ -21,7 +21,7 @@ npm install -g vroutify
 
 ## vroutify-example
 
-Please refer to [vroutify-example](https://github.com/wiowou/vroutify-example) for a working Vue.js project that uses Vroutify.
+Please refer to the example folder for a working Vue.js project that uses Vroutify.
 The examples in the documentation refer directly to it.
 
 ## usage
