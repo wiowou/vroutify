@@ -1,5 +1,9 @@
 # Vroutify
 
+<p align="center">
+  <a href="https://github.com/wiowou/vroutify/actions?query=branch%3Amain+event%3Apush"><img src="https://github.com/wiowou/vroutify/workflows/test/badge.svg?branch=main&event=push" alt="Tests Status"></a>
+ </p>
+
 A [Node.js](https://nodejs.org) module with available [npx](https://www.npmjs.com/package.npx) command to create the routes array required by vue-router.
 Requires version 16.5.0 of [Node.js](https://nodejs.org) or greater, [Vue.js](https://v3.vuejs.org/), and [Vue Router](https://router.vuejs.org/).
 
