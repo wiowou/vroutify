@@ -14,7 +14,7 @@ describe('Vroutify', function () {
     await rm('./example/src/myrouter/routes.js', { force: true });
     expectedOutput = fs.readFileSync('./test/routes.js');
     const output = await exec(
-      './example/node_modules/.bin/vroutify --pages-dir example/src/mypages --routes-dir example/src/myrouter --source-dir example/src'
+      'node ./bin/vroutify.mjs --pages-dir example/src/mypages --router-dir example/src/myrouter --source-dir example/src'
     );
     actualOutput = fs.readFileSync('./example/src/myrouter/routes.js');
   });
