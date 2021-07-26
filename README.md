@@ -13,7 +13,7 @@ With [npm](http://npmjs.org) install locally:
 npm install --save-dev vroutify
 ```
 
-or globally install with:
+or install globally:
 
 ```
 npm install -g vroutify
