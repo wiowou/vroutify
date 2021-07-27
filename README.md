@@ -2,6 +2,10 @@
 
 <p align="center">
   <a href="https://github.com/wiowou/vroutify/actions?query=branch%3Amain+event%3Apush"><img src="https://github.com/wiowou/vroutify/actions/workflows/test.yml/badge.svg?branch=main&event=push" alt="Tests Status"></a>
+  <a href="https://codecov.io/gh/wiowou/vroutify"><img src="https://badgen.net/codecov/c/github/wiowou/vroutify/main" alt="Coverage Status"></a>
+  <a href="https://codecov.io/gh/wiowou/vroutify">
+    <img src="https://codecov.io/gh/wiowou/vroutify/branch/main/graph/badge.svg?token=RH4WYSTMBX" alt="Coverage Status"/>
+  </a>
   <a href="https://www.npmjs.com/package/vroutify"><img src="https://badgen.net/npm/dm/vroutify" alt="Downloads"></a>
   <a href="https://www.npmjs.com/package/vroutify"><img src="https://badgen.net/npm/v/vroutify" alt="Version"></a>
   <a href="https://www.npmjs.com/package/vroutify"><img src="https://badgen.net/npm/license/vroutify" alt="License"></a>

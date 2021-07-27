@@ -1,4 +1,4 @@
 {
-  "reporter": ["lcovonly", "html"],
+  "reporter": ["text-lcov", "html"],
   "include": ["bin", "lib"]
 }

@@ -14,7 +14,7 @@ describe('Vroutify', function () {
     await rm('./example/src/myrouter/routes.js', { force: true });
     expectedOutput = fs.readFileSync('./test/routes.js', { encoding: 'utf8' });
     const output = await exec(
-      'npx c8 node ./bin/vroutify.mjs --pages-dir example/src/mypages --router-dir example/src/myrouter --source-dir example/src --source-dir-alias @'
+      'npx c8 node ./bin/vroutify.mjs --pages-dir example/src/mypages --router-dir example/src/myrouter --source-dir example/src --source-dir-alias @ | ./node_modules/.bin/codecov --pipe'
     );
     actualOutput = fs.readFileSync('./example/src/myrouter/routes.js', { encoding: 'utf8' });
   });
