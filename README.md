@@ -1,8 +1,11 @@
 # Vroutify
 
 <p align="center">
-  <a href="https://github.com/wiowou/vroutify/actions?query=branch%3Amain+event%3Apush"><img src="https://github.com/wiowou/vroutify/workflows/test/badge.svg?branch=main&event=push" alt="Tests Status"></a>
- </p>
+  <a href="https://github.com/wiowou/vroutify/actions?query=branch%3Amain+event%3Apush"><img src="https://github.com/wiowou/vroutify/actions/workflows/test.yml/badge.svg?branch=main&event=push" alt="Tests Status"></a>
+  <a href="https://www.npmjs.com/package/vroutify"><img src="https://badgen.net/npm/dm/vroutify" alt="Downloads"></a>
+  <a href="https://www.npmjs.com/package/vroutify"><img src="https://badgen.net/npm/v/vroutify" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/vroutify"><img src="https://badgen.net/npm/license/vroutify" alt="License"></a>
+</p>
 
 A [Node.js](https://nodejs.org) module with available [npx](https://www.npmjs.com/package.npx) command to create the routes array required by vue-router.
 Requires version 16.5.0 of [Node.js](https://nodejs.org) or greater, [Vue.js](https://v3.vuejs.org/), and [Vue Router](https://router.vuejs.org/).
