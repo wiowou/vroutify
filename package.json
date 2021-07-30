@@ -1,7 +1,7 @@
 {
   "name": "vroutify",
   "description": "Create the routes array needed by vue-router using a pages directory containing vue component files",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "author": "Behram Kapadia",
   "main": "index.mjs",
   "keywords": [
@@ -28,11 +28,13 @@
   },
   "homepage": "https://github.com/wiowou/node-vroutify#readme",
   "scripts": {
-    "test": "mocha test/**/*.mjs"
+    "test": "mocha test/**/*.mjs",
+    "docs": "jsdoc -c .jsdoc.json -P package.json -d docs ./lib/index.mjs"
   },
   "devDependencies": {
     "c8": "^7.7.3",
     "codecov": "^3.8.3",
+    "jsdoc": "^3.6.7",
     "mocha": "^9.0.2"
   }
 }

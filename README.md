@@ -2,7 +2,6 @@
 
 <p align="center">
   <a href="https://github.com/wiowou/vroutify/actions?query=branch%3Amain+event%3Apush"><img src="https://github.com/wiowou/vroutify/actions/workflows/test.yml/badge.svg?branch=main&event=push" alt="Tests Status"></a>
-  <a href="https://codecov.io/gh/wiowou/vroutify"><img src="https://badgen.net/codecov/c/github/wiowou/vroutify/main" alt="Coverage Status"></a>
   <a href="https://codecov.io/gh/wiowou/vroutify">
     <img src="https://codecov.io/gh/wiowou/vroutify/branch/main/graph/badge.svg?token=RH4WYSTMBX" alt="Coverage Status"/>
   </a>
@@ -32,22 +31,12 @@ npm install -g vroutify
 
 ## Vroutify Example
 
-Please refer to the example folder for a working Vue.js project that uses Vroutify.
-The examples in the documentation refer directly to it.
+Please refer to the example folder in this repo for a working [Vue.js](https://v3.vuejs.org/) project that uses Vroutify.
+The examples presented below are very similar to the working example [Vue.js](https://v3.vuejs.org/) project.
 
 ## Usage
 
 package.json
-
-If you installed locally:
-
-```json
-"scripts": {
-    "vroutify": "npx vroutify"
-  },
-```
-
-If you installed globally:
 
 ```json
 "scripts": {
@@ -89,7 +78,7 @@ npm run vroutify
 --pages-dir [src/pages]
 ```
 
-The directory containing your application's views/pages. A relative path from the project root directory to. It defaults to `src/pages`
+The directory containing your application's views/pages. A relative path from the project root directory. It defaults to `src/pages`
 
 ```
 --router-dir [src/router]
@@ -267,11 +256,11 @@ statements be used in `routing.mjs` files at the moment.
 
 **Functions as Properties**
 
-Functions are supported but they must not be "arrow" functions.
+Functions are supported but they must not be [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 
 ##### Ignored Routes
 
-Routes that start with a hyphen, '-', will be ignored by Vroutify. In this example, `pages/-others` and `pages/-help.vue` are ignored.
+Routes that start with a hyphen, `-`, will be ignored by Vroutify. In this example, `pages/-others` and `pages/-help.vue` are ignored.
 
 ##### Ignored Files
 
