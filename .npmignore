@@ -2,6 +2,8 @@ test
 example
 node_modules
 coverage
+docs
 .c8rc.json
 .gitignore
 .npmignore
+.jsdoc.json
