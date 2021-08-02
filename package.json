@@ -24,9 +24,9 @@
     "index.mjs"
   ],
   "bugs": {
-    "url": "https://github.com/wiowou/node-vroutify/issues"
+    "url": "https://github.com/wiowou/vroutify/issues"
   },
-  "homepage": "https://github.com/wiowou/node-vroutify#readme",
+  "homepage": "https://github.com/wiowou/vroutify#readme",
   "scripts": {
     "test": "mocha test/**/*.mjs",
     "docs": "jsdoc -c .jsdoc.json -P package.json -d docs ./lib/index.mjs"
