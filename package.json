@@ -1,7 +1,7 @@
 {
   "name": "vroutify",
   "description": "Create the routes array needed by vue-router using a pages directory containing vue component files",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "author": "Behram Kapadia",
   "main": "index.mjs",
   "keywords": [
