@@ -1,7 +1,7 @@
 {
   "name": "vroutify",
   "description": "Create the routes array needed by vue-router using a pages directory containing vue component files",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Behram Kapadia",
   "main": "index.mjs",
   "keywords": [
@@ -12,7 +12,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wiowou/node-vroutify.git"
+    "url": "git+https://github.com/wiowou/vroutify.git"
   },
   "bin": {
     "vroutify": "bin/vroutify.mjs"
